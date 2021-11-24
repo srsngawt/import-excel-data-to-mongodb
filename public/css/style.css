@@ -1,0 +1,150 @@
+h1{
+    background-color:#ffde03;
+    color:#0336ff;
+    padding:10px 40px;
+    padding-top: 15px;
+    margin-top:10px;
+    font-family: Bahnschrift Light;
+    font-size: 33px;
+    letter-spacing:0.1em;
+}
+.Section .topic{
+    font-family: 'Courier New', Courier, monospace;
+    font-size:23px;
+}
+.Section .box{
+    width:40%;
+    padding:10px 30px;
+}
+
+#box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Raleway';
+    font-size: 2.5rem;
+}
+.gradient-border {
+    --borderWidth: 3px;
+    background: white;
+    position: relative;
+    border-radius: 3px;
+}
+.gradient-border:after {
+    content: '';
+    position: absolute;
+    top: calc(-1*var(--borderWidth));
+    left: calc(-1*var(--borderWidth));
+    height: calc(100% + var(--borderWidth)*2);
+    width: calc(100% + var(--borderWidth)*2);
+    background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+    border-radius: calc(2*var(--borderWidth));
+    z-index: -1;
+    animation: animatedgradient 3s ease alternate infinite;
+    background-size: 300% 300%;
+}
+
+
+@keyframes animatedgradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.wrapper{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+  
+.wrapper .file-upload{
+  
+    height:150px;
+    width:150px;
+    border-radius: 100px;
+    position:relative;
+    
+    display:flex;
+    justify-content:center;
+    align-items: center;  
+
+    border:1px solid #FFFFFF;
+    overflow:hidden;
+    background-image: linear-gradient(to bottom, #2590EB 50%, #FFFFFF 50%);
+    background-size: 50% 200%;
+    transition: all 1s;
+    color: #FFFFFF;
+    font-size:75px;
+}
+.wrapper .file-upload input[type='file']{
+  
+    height:150px;
+    width:150px;
+    position:absolute;
+    top:0;
+    left:0;
+    opacity:0;
+    cursor:pointer;
+  
+}
+  
+.file-upload:hover{
+    background-position: 0 -100%;
+    color:#2590EB;
+}
+
+#inf{
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+button{
+	padding: 10px 40px;
+    
+	background: none;
+	border: none;
+	position: relative;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 2px;
+	cursor: pointer;
+}
+button::after, button::before{
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		border: 2px solid#2590EB;
+		transition: transform .2s; 
+}
+button::after{
+    transform: translate(3px, 3px);
+}	
+button::before{
+    transform: translate(-3px, -3px);
+}
+button:hover::before, button:hover::after{
+        transform: translate(0px);
+}
+
+h4{
+    margin:35px;
+    font-size:42px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+img{
+    border-radius:50%;
+    height:28px;
+    width:28px;
+}
