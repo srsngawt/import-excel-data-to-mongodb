@@ -145,6 +145,6 @@ h4{
 }
 img{
     border-radius:50%;
-    height:28px;
-    width:28px;
+    height:28px !important;
+    width:28px !important;
 }
