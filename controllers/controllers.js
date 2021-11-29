@@ -5,7 +5,7 @@ const async = require('async');
 
 
 exports.getall = async(req, res) =>{
-    importExcelData2MongoDB(process.cwd() + '/public/uploads/' + req.file.filename );
+    await importExcelData2MongoDB(process.cwd() + '/public/uploads/' + req.file.filename );
     res.render('success');
 }
 
