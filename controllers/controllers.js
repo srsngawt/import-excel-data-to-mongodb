@@ -70,7 +70,7 @@ async function importExcelData2MongoDB  (filePath){
 
         
     } catch (error) {
-        
+        console.log(error);
     }
     fs.unlinkSync(filePath);
 
