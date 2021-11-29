@@ -1,6 +1,7 @@
 const Person = require('../model/model');
 const excelToJson = require('convert-excel-to-json');
 const fs = require('fs');
+const async = require('async');
 
 
 exports.getall = async(req, res) =>{
@@ -41,24 +42,33 @@ async function importExcelData2MongoDB  (filePath){
         console.log(error);
     }
     
-    console.log(excelData);
+
 
     const dataToInsert = excelData['Sheet1'];
+    //return console.log(dataToInsert);
+
     try {
-        await dataToInsert.forEach(async (row)=>{
-            const newPerson = new Person(row);
-            await newPerson.save((err,data)=>{
-                if(err){
-                    // console.log(err);
-                    if(err.name === 'ValidationError') 
-                    console.log("validation error");
-                    else if(err.code && err.code == 11000)
-                    console.log("duplicate key error");
-                    else
-                    console.log("internal server error");
-                }
-            });
-        })
+        async.eachSeries(dataToInsert, async function(e, cb) {
+            let oldPerson = await Person.findOne({ email: e.email });
+            if (oldPerson) {
+                console.log("Duplicate Record");
+            } else {
+                const newPerson = new Person(e);
+                // console.log(newPerson);
+                await newPerson.save();
+            }
+            return cb();
+        },
+        function(err) {
+            if (err) {
+                console.log(err.message);
+            } else {
+                console.log("Successfully Added");
+            }
+  
+        });
+
+        
     } catch (error) {
         
     }
